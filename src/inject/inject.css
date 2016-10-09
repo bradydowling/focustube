@@ -1,0 +1,6 @@
+/**
+ * Place your custom CSS styles here.
+ **/
+.watch-sidebar-gutter, .individual-feed, .ytp-endscreen-content, #watch-discussion {
+  display: none;
+}
