@@ -1,9 +1,10 @@
-// Saves options to chrome.storage
+// Saves options to chrome.storage.sync.
 function save_options() {
-  var hideFrontpage = document.getElementById('frontpage').value;
-  var hideSuggestions = document.getElementById('suggestions').value;
-  var hideAfter = document.getElementById('after').value;
-  var hideComments = document.getElementById('comment').value;
+  var hideFrontpage = document.getElementById('frontpage').checked;
+  var hideSuggestions = document.getElementById('suggestions').checked;
+  var hideAfter = document.getElementById('after').checked;
+  var hideComments = document.getElementById('comment').checked;
+  var status = document.getElementById('status');
   chrome.storage.sync.set({
     hideFrontpage: hideFrontpage,
     hideSuggestions: hideSuggestions,
@@ -12,27 +13,24 @@ function save_options() {
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
-    status.textContent = 'Options saved.';
+    status.textContent = 'Preferences saved.';
     setTimeout(function() {
       status.textContent = '';
     }, 750);
   });
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
 function restore_options() {
-  // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
     hideFrontpage: true,
     hideSuggestions: true,
     hideAfter: true,
     hideComments: true
   }, function(items) {
-    document.getElementById('frontpage').value = items.hideFrontpage;
-    document.getElementById('suggestions').value = items.hideSuggestions;
-    document.getElementById('after').value = items.hideAfter;
-    document.getElementById('comment').value = items.hideComments;
+    document.getElementById('frontpage').checked = items.hideFrontpage;
+    document.getElementById('suggestions').checked = items.hideSuggestions;
+    document.getElementById('after').checked = items.hideAfter;
+    document.getElementById('comment').checked = items.hideComments;
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
