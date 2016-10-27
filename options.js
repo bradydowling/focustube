@@ -16,7 +16,7 @@ function save_options() {
     status.textContent = 'Preferences saved! Reload your page for them to take effect.';
     setTimeout(function() {
       status.textContent = '';
-    }, 750);
+    }, 1250);
   });
 }
 

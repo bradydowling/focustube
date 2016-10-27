@@ -1,33 +1,34 @@
 chrome.storage.sync.get({
-    hideFrontpage,
-    hideSuggestions,
-    hideAfter,
-    hideComments
+    hideFrontpage: true,
+    hideSuggestions: true,
+    hideAfter: true,
+    hideComments: true
   }, function(items) {
-    if (items.hideFrontpage) {
+    var frontPageItems = document.querySelectorAll(".individual-feed");
+    var suggestions = document.querySelectorAll(".watch-sidebar-gutter");
+    var endscreenItems = document.querySelector(".ytp-endscreen-content");
+    var comments = document.querySelector("#watch-discussion");
+
+    if (items.hideFrontpage && frontPageItems) {
       console.log("should hide the front page");
-      var frontPageItems = document.querySelectorAll(".individual-feed");
-      frontPageItems.forEach(function(key, item) {
-        item.class += "hideMe";
+      frontPageItems.forEach(function(item, key) {
+        item.style.display = "none";
       });
     }
-    if (items.hideSuggestions) {
+    if (items.hideSuggestions && suggestions) {
       console.log("should hide the suggestions");
-      var suggestions = document.querySelectorAll(".watch-sidebar-gutter");
-      suggestions.forEach(function(key, suggestion) {
-        suggestion.class += "hideMe";
+      suggestions.forEach(function(suggestion, key) {
+        suggestion.style.display = "none";
       });
     }
-    if (items.hideAfter) {
+    if (items.hideAfter && endscreenItems) {
       console.log("should hide the post video");
-      var endscreenItems = document.querySelector(".ytp-endscreen-content");
-      endscreenItems.forEach(function(key, item) {
-        item.class += "hideMe";
+      endscreenItems.forEach(function(item, key) {
+        item.style.display = "none";
       })
     }
-    if (items.hideComments) {
-      console.log("should hide the comments");
-      var comments = document.querySelector("#watch-discussion");
-      comments.class += "hideMe";
+    if (items.hideComments && comments) {
+      console.log("should hide comments");
+      comments.style.display = "none";
     }
   });
