@@ -1,6 +1,6 @@
 {
   "name": "FocusTube",
-  "version": "0.0.3",
+  "version": "0.0.3.1",
   "manifest_version": 2,
   "description": "YouTube can be great for learning...when you remove the distractions. Take back your free will and install FocusTube.",
   "homepage_url": "https://bradydowling.github.io/focustube",
@@ -11,13 +11,8 @@
   },
   "default_locale": "en",
   "permissions": [
-    "https://youtube.com/*",
-    "storage"
+    "https://youtube.com/*"
   ],
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
-  },
   "content_scripts": [
     {
       "matches": [
@@ -25,9 +20,6 @@
       ],
       "css": [
         "src/inject/inject.css"
-      ],
-      "js": [
-        "src/inject/inject.js"
       ]
     }
   ]
