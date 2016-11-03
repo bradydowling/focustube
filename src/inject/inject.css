@@ -1,3 +1,3 @@
-.individual-feed .watch-sidebar-gutter .ytp-endscreen-content .comment-section-renderer {
+.watch-sidebar-gutter, .individual-feed, .ytp-endscreen-content, #watch-discussion {
     display: none;
 }
